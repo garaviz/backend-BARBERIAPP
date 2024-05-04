@@ -1,0 +1,5 @@
+instalar npm bcrypt
+como encripto una contraseña para guardarla en la base de datos
+como la desemcripto para comparar con la ingresada
+como hago una consulta sql para un login
+como creo un archivo git ignore y como le pongo los node modules
