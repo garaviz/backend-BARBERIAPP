@@ -16,6 +16,11 @@ servicio_usuario.buscar_id = async(id)=>{
     console.log("res",resp);
     return {resp,error:false}
 }
+servicio_usuario.login = async(body)=>{
+    const resp = await db_usuario.login(body);
+    console.log("res",resp);
+    return {resp,error:false}
+}
 servicio_usuario.actualizar = async(data)=>{
     const resp = await db_usuario.actualizar(data);
     console.log("res",resp);

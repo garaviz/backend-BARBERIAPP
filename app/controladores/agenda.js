@@ -1,9 +1,9 @@
-const controlador_usuario = module.exports;
-const servicio_usuario = require("../servicios/usuario");
+const controlador_agenda = module.exports;
+const servicio_agenda = require("../servicios/agenda");
 
-controlador_usuario.crear = async(req,res)=>{
+controlador_agenda.crear = async(req,res)=>{
     const data = req.body
-    return await servicio_usuario.crear(data).then(response=>{
+    return await servicio_agenda.crear(data).then(response=>{
         if(response.error==false){
 
             res.status(200).json(response)
@@ -14,8 +14,8 @@ controlador_usuario.crear = async(req,res)=>{
         res.status(500).json(error)
     })
 }
-controlador_usuario.listar = async(req,res)=>{
-    return await servicio_usuario.listar().then(response=>{
+controlador_agenda.listar = async(req,res)=>{
+    return await servicio_agenda.listar().then(response=>{
         if(response.error==false){
 
             res.status(200).json(response)
@@ -26,9 +26,9 @@ controlador_usuario.listar = async(req,res)=>{
         res.status(500).json(error)
     })
 }
-controlador_usuario.buscar_id = async(req,res)=>{
+controlador_agenda.buscar_id = async(req,res)=>{
     const id = req.params.id
-    return await servicio_usuario.buscar_id(id).then(response=>{
+    return await servicio_agenda.buscar_id(id).then(response=>{
         if(response.error==false){
 
             res.status(200).json(response)
@@ -39,24 +39,9 @@ controlador_usuario.buscar_id = async(req,res)=>{
         res.status(500).json(error)
     })
 }
-controlador_usuario.login = async(req,res)=>{
-    const body = req.body
-    console.log("body",body);
-    return await servicio_usuario.login(body).then(response=>{
-        if(response.error==false){
-
-            res.status(200).json(response)
-        }else{
-            res.status(400).json(Response)
-        }
-    }).catch(error=>{
-        console.log("error",error);
-        res.status(500).json(error)
-    })
-}
-controlador_usuario.actualizar = async(req,res)=>{
+controlador_agenda.actualizar = async(req,res)=>{
     const data = req.body
-    return await servicio_usuario.actualizar(data).then(response=>{
+    return await servicio_agenda.actualizar(data).then(response=>{
         if(response.error==false){
 
             res.status(200).json(response)
@@ -67,9 +52,9 @@ controlador_usuario.actualizar = async(req,res)=>{
         res.status(500).json(error)
     })
 }
-controlador_usuario.eliminar = async(req,res)=>{
+controlador_agenda.eliminar = async(req,res)=>{
     const id = req.params.id
-    return await servicio_usuario.eliminar(id).then(response=>{
+    return await servicio_agenda.eliminar(id).then(response=>{
         if(response.error==false){
 
             res.status(200).json(response)
