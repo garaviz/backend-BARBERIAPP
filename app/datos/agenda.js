@@ -58,3 +58,51 @@ agenda.eliminar = (id)=>{
       })  
     })
 }
+agenda.listar_por_colaborador = (idColaborador)=>{
+  return new Promise((resolve,reject)=>{
+    base_datos.query('SELECT * FROM agenda WHERE idColaborador = ? and reservada = 0',[idColaborador],(err,rows)=>{
+      if(err){
+          reject(err)
+      }else{
+          resolve(rows)
+      }
+    })  
+  })
+}
+agenda.listar_por_colaborador_ocupada = (idColaborador)=>{
+  return new Promise((resolve,reject)=>{
+    base_datos.query('SELECT * FROM agenda WHERE idColaborador = ? and reservada = 1',[idColaborador],(err,rows)=>{
+      if(err){
+          reject(err)
+      }else{
+          resolve(rows)
+      }
+    })  
+  })
+}
+agenda.actualizar_reserva = (data)=>{
+  const {idAgenda,reservada}=data
+    return new Promise((resolve,reject)=>{
+      base_datos.query('UPDATE agenda SET reservada = ? WHERE idAgenda = ?',[reservada,idAgenda],(err,rows)=>{
+        if(err){
+            reject(err)
+        }else{
+            resolve(rows[0])
+        }
+      })  
+    })
+}
+agenda.validar_agenda = (data)=>{
+  let {fecha,hora,idColaborador}=data;
+  console.log(fecha,hora,idColaborador)
+  return new Promise((resolve,reject)=>{
+    base_datos.query('SELECT * FROM agenda WHERE Date(fecha) = ? and hora = ?',[fecha,hora,idColaborador],(err,rows)=>{
+      if(err){
+          reject(err)
+      }else{
+        console.log('filas',rows);
+          resolve(rows)
+      }
+    })  
+  })
+}

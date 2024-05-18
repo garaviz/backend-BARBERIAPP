@@ -27,3 +27,28 @@ servicio_agenda.eliminar = async(id)=>{
     console.log("res",resp);
     return {resp,error:false}
 }
+servicio_agenda.listar_por_colaborador = async(idColaborador)=>{
+    const resp = await db_agenda.listar_por_colaborador(idColaborador);
+    console.log("res",resp);
+    return {resp,error:false}
+}
+servicio_agenda.listar_por_colaborador_ocupada = async(idColaborador)=>{
+    const resp = await db_agenda.listar_por_colaborador_ocupada(idColaborador);
+    console.log("res",resp);
+    return {resp,error:false}
+}
+servicio_agenda.actualizar_reserva = async(data)=>{
+    const resp = await db_agenda.actualizar_reserva(data);
+    console.log("res",resp);
+    return {resp,error:false}
+}
+servicio_agenda.validar_agenda = async(data)=>{
+    data.fecha = `${data.fecha} 00:00:00`;
+    const resp = await db_agenda.validar_agenda(data);
+    // if(resp.length>0){
+        
+    // }else{
+    //     return{resp,error:true}
+    // }
+    return {resp,error:false}
+}

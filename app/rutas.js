@@ -56,6 +56,14 @@ rutero.put("/agenda/actualizar",controlador_agenda.actualizar)
 
 rutero.delete("/agenda/eliminar/:id",controlador_agenda.eliminar)
 
+rutero.get("/agenda/listar_por_colaborador/:idColaborador",controlador_agenda.listar_por_colaborador)
+
+rutero.get("/agenda/listar_por_colaborador_ocupada/:idColaborador",controlador_agenda.listar_por_colaborador_ocupada)
+
+rutero.put("/agenda/actualizar_reserva",controlador_agenda.actualizar_reserva)
+
+rutero.post("/agenda/validar_agenda",controlador_agenda.validar_agenda)
+
 //rutas de la tabla reservas
 
 rutero.post("/reservas/crear",controlador_reservas.crear)
