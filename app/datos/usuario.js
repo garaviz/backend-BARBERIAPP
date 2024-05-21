@@ -2,9 +2,9 @@ const usuario = module.exports;
 const base_datos = require("../configuraciones/basedatos");
 
 usuario.crear = (data)=>{
-    const {correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,clave}=data;
+    const {correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,contrasenia}=data;
     return new Promise((resolve,reject)=>{
-      base_datos.query('INSERT INTO usuario(correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,clave) VALUES(?,?,?,?,?,?)',[correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,clave],(err,rows)=>{
+      base_datos.query('INSERT INTO usuario(correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,contrasenia) VALUES(?,?,?,?,?,?)',[correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,contrasenia],(err,rows)=>{
         if(err){
             reject(err)
         }else{
@@ -36,9 +36,9 @@ usuario.buscar_id = (id)=>{
     })
 }
 usuario.login = (body)=>{
-  const {correoElectronico,clave} = body
+  const {correoElectronico,contrasenia} = body
   return new Promise((resolve,reject)=>{
-    base_datos.query('SELECT idUsuario,correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento FROM usuario WHERE correoElectronico = ? and  clave = ?',[correoElectronico,clave],(err,rows)=>{
+    base_datos.query('SELECT idUsuario,correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento FROM usuario WHERE correoElectronico = ? and  contrasenia = ?',[correoElectronico,contrasenia],(err,rows)=>{
       if(err){
           reject(err)
       }else{
@@ -48,9 +48,9 @@ usuario.login = (body)=>{
   })
 }
 usuario.actualizar = (data)=>{
-  const {correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,clave,id}=data
+  const {correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,contrasenia,id}=data
     return new Promise((resolve,reject)=>{
-      base_datos.query('UPDATE usuario SET correoElectronico = ?,nombre = ?,telefono = ?,idTipoUsuario = ?,fechaNacimiento = ?, clave = ? WHERE idUsuario = ?',[correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,clave,id],(err,rows)=>{
+      base_datos.query('UPDATE usuario SET correoElectronico = ?,nombre = ?,telefono = ?,idTipoUsuario = ?,fechaNacimiento = ?, contrasenia = ? WHERE idUsuario = ?',[correoElectronico,nombre,telefono,idTipoUsuario,fechaNacimiento,contrasenia,id],(err,rows)=>{
         if(err){
             reject(err)
         }else{

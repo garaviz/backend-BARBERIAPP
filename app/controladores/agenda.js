@@ -93,6 +93,7 @@ controlador_agenda.listar_por_colaborador_ocupada = async(req,res)=>{
 }
 controlador_agenda.actualizar_reserva = async(req,res)=>{
     const data = req.body
+    console.log('data llega',data);
     return await servicio_agenda.actualizar_reserva(data).then(response=>{
         if(response.error==false){
 
@@ -101,6 +102,7 @@ controlador_agenda.actualizar_reserva = async(req,res)=>{
             res.status(400).json(Response)
         }
     }).catch(error=>{
+        console.log("error",error);
         res.status(500).json(error)
     })
 }

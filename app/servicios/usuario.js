@@ -2,8 +2,8 @@ const servicio_usuario = module.exports;
 const db_usuario = require("../datos/usuario");
 
 servicio_usuario.crear = async(data)=>{
+    console.log("data",data);
     const resp = await db_usuario.crear(data);
-    console.log("res",resp);
     return {resp,error:false}
 }
 servicio_usuario.listar = async()=>{

@@ -11,6 +11,7 @@ controlador_usuario.crear = async(req,res)=>{
             res.status(400).json(Response)
         }
     }).catch(error=>{
+        console.log("error",error);
         res.status(500).json(error)
     })
 }

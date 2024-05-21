@@ -87,7 +87,7 @@ agenda.actualizar_reserva = (data)=>{
         if(err){
             reject(err)
         }else{
-            resolve(rows[0])
+            resolve(rows)
         }
       })  
     })
